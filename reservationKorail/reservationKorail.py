@@ -11,14 +11,16 @@ while True:
   now = datetime.now()
   soup = BeautifulSoup(requests.get(url).content, 'html.parser')
   dates = soup.find_all('span', {'class', 'bookable'})
-  if dates:
+  
+  if len(dates) > 0:
     for i in dates:
       print(i)
+      f = open('log.txt', 'a', encoding='utf8')
+      f.write(str(now.strftime('%Y-%m-%d %H:%M:%S')) + ' / ' + str(dates) + '\n')
+      f.close()
+      
   print(str(now.strftime('%Y-%m-%d %H:%M:%S')) + ' / ' + str(dates))
   
-  f = open('log.txt', 'a', encoding='utf8')
-  f.write(str(now.strftime('%Y-%m-%d %H:%M:%S')) + ' / ' + str(dates) + '\n')
-  f.close()
   
   # TODO 예약 가능 일자 있을 경우 텔레그램 메시지 발송 기능 추가
   
