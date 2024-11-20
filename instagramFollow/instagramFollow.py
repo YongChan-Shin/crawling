@@ -29,9 +29,16 @@ time.sleep(3)
 inputPW.send_keys(Keys.ENTER)
 time.sleep(5)
 
+# 로그인 저장 안 함 선택
+try:
+  btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
+  btn.click()
+except:
+  time.sleep(5)
+  btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
+  btn.click()
+
 # 팔로우 목록 팝업 띄우기
-btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
-btn.click()
 time.sleep(3)
 driver.get(url)
 time.sleep(3)
@@ -45,6 +52,12 @@ for i in range(5):
 # for i in range(int(followBtn.text) // 8):
   followListBox.send_keys(Keys.END)
   time.sleep(2)
+  
+# 팔로우 ID 정보 추출
+followIDs = followListBox.find_elements(By.CLASS_NAME, '_aacx')
 
+for i in followIDs:
+  f = open('followIDs.txt', 'a')
+  f.write('{}\n'.format(i.text))
 
 time.sleep(100000000)
