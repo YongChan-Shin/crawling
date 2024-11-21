@@ -48,8 +48,8 @@ time.sleep(3)
 
 # 팔로우 목록 스크롤
 followListBox = driver.find_element(By.CLASS_NAME, 'xyi19xy')
-for i in range(5):
-# for i in range(int(followBtn.text) // 8):
+for i in range(int(followBtn.text) // 8):
+# for i in range(5):
   followListBox.send_keys(Keys.END)
   time.sleep(2)
   
