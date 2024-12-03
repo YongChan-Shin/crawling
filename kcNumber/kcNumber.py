@@ -10,6 +10,9 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 driver.get('https://www.safetykorea.kr/release/itemSearch/')
 
+# 인증번호 조회 url(참고용)
+# https://safetykorea.kr/search/searchPop?certNum=CB017R1143-4001
+
 kcNumbers = []
 
 time.sleep(3)
@@ -23,7 +26,7 @@ targetItemDivEl = targetItemUl.find_element(By.CSS_SELECTOR, 'li:nth-child(1) > 
 targetItemDivEl.click()
 time.sleep(5)
 
-for page in range(10):
+for page in range(1000):
   for i in range(10):
     try:
       number = driver.find_element(By.ID, "certNum_{}".format(i))
