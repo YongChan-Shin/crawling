@@ -49,7 +49,12 @@ time.sleep(3)
 inputPW.send_keys(Keys.ENTER)
 time.sleep(5)
 
+idx = 1
+
 while True:
+  
+  print("idx : {} / {}".format(idx, time.strftime("%Y-%m-%d %H:%M:%S"))) 
+  
 # 발주리스트 페이지 이동
   driver.get(os.environ.get("URL_2"))
   time.sleep(2)
@@ -76,3 +81,4 @@ while True:
 
   time.sleep(300)
   toaster.__init__()
+  idx += 1
