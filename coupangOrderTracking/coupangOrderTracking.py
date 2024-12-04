@@ -61,14 +61,14 @@ while True:
 
   # 최근 발주리스트 추출
   recentOrderNum = []
-  orderTable = driver.find_element(By.CLASS_NAME, 'scmTableArea')
-
-  recentOrderList = orderTable.find_elements(By.TAG_NAME, 'a')
+  # orderTable = driver.find_element(By.CLASS_NAME, 'scmTableArea')
+  # recentOrderList = orderTable.find_elements(By.TAG_NAME, 'a')
+  
+  recentOrderList = driver.find_elements(By.CSS_SELECTOR, '#app > div.contentsArea > div.scmContentsArea > div.scmTableArea > table > tbody > tr > td:nth-child(2) > a:nth-child(1)')
 
   for el in recentOrderList:
     data = el.text
-    if data != 'SKU 바코드 출력' and len(data) == 8:
-      recentOrderNum.append(data)
+    recentOrderNum.append(data)
       
   with open('./confirmList.txt') as f:
     lines = f.readlines()
