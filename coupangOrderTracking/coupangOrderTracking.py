@@ -78,14 +78,10 @@ while True:
     for num in recentOrderNum:
       if num not in lines:
         toaster.show_toast("쿠팡 신규 발주건 발생!","발주리스트 확인 요망", icon_path=None, duration=1000, threaded=True)
+        with open('쿠팡 신규 발주건({}).txt'.format(datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')), 'a') as f:
+          f.write('{}\n'.format(num))
         print('(신규 발주건 발생) 발주번호 : {}'.format(num))
         
-  if len(recentOrderNum) > 0:
-    f = open('쿠팡 신규 발주건({}).txt'.format(datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')), 'w')
-    for num in recentOrderNum:
-      f.write('{}\n'.format(num))
-    f.close()
-
   time.sleep(300)
   toaster.__init__()
   idx += 1
