@@ -22,46 +22,49 @@ while True:
   # 최저가 정보
   lowPriceData = {}
 
-  for prd in products.products:
-    driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc'.format(prd))
-    priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__S2p_v')[0].text
-    lowPriceData[prd] = priceEl
-    thumbnailImg = driver.find_elements(By.CLASS_NAME, 'product_item__MDtDF')[0]
-    thumbnailImg.screenshot('./thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', '')))
-    
-    # 썸네일 이미지 복사
-    from_thumbnail_path = './thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', ''))
-    to_thumbnail_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/img/lowPriceTracking/{}.jpg'.format(prd.replace('키즈꼬모 ', ''))
-    shutil.copy(from_thumbnail_path, to_thumbnail_path)
-    
-    time.sleep(2)
-    
-  # JSON 파일로 저장
-  jsonData = {}
-  jsonData['checkTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-  jsonData['data'] = []
-
-  for key, value in lowPriceData.items():
-    key = key.replace('키즈꼬모 ', '')
-    try:
-      jsonData['data'].append({
-          'prdName': key,
-          'salePrice': priceData.priceData[key]['salePrice'],
-          'dealPrice': priceData.priceData[key]['dealPrice'],
-          'lowPrice': int(value.replace(',', '').replace('원', '')),
-          'diffPrice': int(value.replace(',', '').replace('원', '')) - priceData.priceData[key]['dealPrice'],
-      })
-    except Exception as e:
-      print(e)
-    
-  print(jsonData)
+  try:
+    for prd in products.products:
+      driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc&fo=true'.format(prd))
+      priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__S2p_v')[0].text
+      lowPriceData[prd] = priceEl
+      thumbnailImg = driver.find_elements(By.CLASS_NAME, 'product_item__MDtDF')[0]
+      thumbnailImg.screenshot('./thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', '')))
       
-  with open('./trackingJSON/lowPriceTracking.json', 'w', encoding='UTF-8') as outfile:
-    json.dump(jsonData, outfile, indent=2, ensure_ascii=False)
+      # 썸네일 이미지 복사
+      from_thumbnail_path = './thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', ''))
+      to_thumbnail_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/img/lowPriceTracking/{}.jpg'.format(prd.replace('키즈꼬모 ', ''))
+      shutil.copy(from_thumbnail_path, to_thumbnail_path)
+      
+      time.sleep(2)
+      
+    # JSON 파일로 저장
+    jsonData = {}
+    jsonData['checkTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    jsonData['data'] = []
 
-  # 트래킹 json 파일 복사
-  from_jsonFile_path = './trackingJSON/lowPriceTracking.json'
-  to_jsonFile_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/data/lowPriceTracking.json'
-  shutil.copy(from_jsonFile_path, to_jsonFile_path)
+    for key, value in lowPriceData.items():
+      key = key.replace('키즈꼬모 ', '')
+      try:
+        jsonData['data'].append({
+            'prdName': key,
+            'salePrice': priceData.priceData[key]['salePrice'],
+            'dealPrice': priceData.priceData[key]['dealPrice'],
+            'lowPrice': int(value.replace(',', '').replace('원', '')),
+            'diffPrice': int(value.replace(',', '').replace('원', '')) - priceData.priceData[key]['dealPrice'],
+        })
+      except Exception as e:
+        print(e)
+      
+    print(jsonData)
+        
+    with open('./trackingJSON/lowPriceTracking.json', 'w', encoding='UTF-8') as outfile:
+      json.dump(jsonData, outfile, indent=2, ensure_ascii=False)
 
-  time.sleep(180)
+    # 트래킹 json 파일 복사
+    from_jsonFile_path = './trackingJSON/lowPriceTracking.json'
+    to_jsonFile_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/data/lowPriceTracking.json'
+    shutil.copy(from_jsonFile_path, to_jsonFile_path)
+
+    time.sleep(180)
+  except Exception as e:
+    print(e)

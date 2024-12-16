@@ -20,6 +20,7 @@ inputPW.send_keys(os.environ.get('INSTA_PW'))
 time.sleep(3)
 inputPW.send_keys(Keys.ENTER)
 time.sleep(5)
+
 try:
   btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
   btn.click()
@@ -38,6 +39,9 @@ with open('./followIDs.txt') as f:
       driver.get(url)
       time.sleep(3)
 
+      # 팔로워 수 추출
+      followerCnt = driver.find_elements(By.CLASS_NAME, 'x1vvkbs')[2].text
+      
       # 메인페이지 상단 이미지 저장 
       mainTag = driver.find_element(By.TAG_NAME, "main")
       mainTag.screenshot('1.jpg')
@@ -62,14 +66,14 @@ with open('./followIDs.txt') as f:
       new_image.paste(image2, (0, image1.height))
       new_image.paste(image3, (0, image1.height + image2.height))
 
-      new_image.save('./img/{}.jpg'.format(id), 'JPEG', quality=100, subsampling=0)
+      new_image.save('./img/{}_{}.jpg'.format(id, followerCnt), 'JPEG', quality=100, subsampling=0)
       
       time.sleep(3)
       
       for i in range(1, 4):
         os.remove('./{}.jpg'.format(i))
         
-    except:
-      pass
+    except Exception as e:
+      print(e)
 
 time.sleep(100000000)
