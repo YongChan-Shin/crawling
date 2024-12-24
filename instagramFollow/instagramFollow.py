@@ -42,7 +42,11 @@ except:
 time.sleep(3)
 driver.get(url)
 time.sleep(3)
-followBtn = driver.find_elements(By.CLASS_NAME, 'x1vvkbs')[3]
+
+# TODO 대상 목록 체크
+# followBtn = driver.find_elements(By.CLASS_NAME, 'x1vvkbs')[3] # 팔로우 목록 띄우기
+followBtn = driver.find_elements(By.CLASS_NAME, 'x1vvkbs')[2] # 팔로워 목록 띄우기
+
 followBtn.click()
 time.sleep(3)
 
