@@ -26,9 +26,7 @@ while True:
   # 최저가 정보
   lowPriceData = {}
 
-  idx = 1
-
-  for prd in products.products:
+  for idx, prd in enumerate(products.products):
     try:
       driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc&fo=true'.format(prd))
       priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__S2p_v')[0].text
@@ -55,7 +53,7 @@ while True:
       coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
       
       lowPriceData[prd].append(coupangPriceEl)
-      print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx, prd, lowPriceData[prd]))
+      print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx+1, prd, lowPriceData[prd]))
       
       driverCoupang.quit()
       
@@ -63,9 +61,6 @@ while True:
     except Exception as e:
       print(e)
       continue
-    
-    idx += 1
-      
     
   # JSON 파일로 저장
   jsonData = {}
