@@ -26,6 +26,8 @@ while True:
   # 최저가 정보
   lowPriceData = {}
 
+  idx = 1
+
   for prd in products.products:
     try:
       driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc&fo=true'.format(prd))
@@ -45,22 +47,24 @@ while True:
       continue
     
     # 쿠팡 판매가 크롤링
-    # try:
-    #   driverCoupang = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-    #   url = 'https://www.coupang.com/vp/products/{}'.format(priceData.priceData[prd.replace('키즈꼬모 ', '')]['coupangId'])
-    #   driverCoupang.get(url)
+    try:
+      driverCoupang = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+      url = 'https://www.coupang.com/vp/products/{}'.format(priceData.priceData[prd.replace('키즈꼬모 ', '')]['coupangId'])
+      driverCoupang.get(url)
       
-    #   coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
+      coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
       
-    #   lowPriceData[prd].append(coupangPriceEl)
-    #   print(prd, lowPriceData[prd])
+      lowPriceData[prd].append(coupangPriceEl)
+      print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx, prd, lowPriceData[prd]))
       
-    #   driverCoupang.quit()
+      driverCoupang.quit()
       
-    #   time.sleep(2)
-    # except Exception as e:
-    #   print(e)
-    #   continue
+      time.sleep(10)
+    except Exception as e:
+      print(e)
+      continue
+    
+    idx += 1
       
     
   # JSON 파일로 저장
