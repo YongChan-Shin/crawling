@@ -17,6 +17,10 @@ import priceData
 load_dotenv()
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
+
 while True:
 
   # 최저가 정보
@@ -26,7 +30,7 @@ while True:
     try:
       driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc&fo=true'.format(prd))
       priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__S2p_v')[0].text
-      lowPriceData[prd] = priceEl
+      lowPriceData[prd] = [priceEl]
       thumbnailImg = driver.find_elements(By.CLASS_NAME, 'product_item__MDtDF')[0]
       thumbnailImg.screenshot('./thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', '')))
       
@@ -40,6 +44,25 @@ while True:
       print(e)
       continue
     
+    # 쿠팡 판매가 크롤링
+    # try:
+    #   driverCoupang = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    #   url = 'https://www.coupang.com/vp/products/{}'.format(priceData.priceData[prd.replace('키즈꼬모 ', '')]['coupangId'])
+    #   driverCoupang.get(url)
+      
+    #   coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
+      
+    #   lowPriceData[prd].append(coupangPriceEl)
+    #   print(prd, lowPriceData[prd])
+      
+    #   driverCoupang.quit()
+      
+    #   time.sleep(2)
+    # except Exception as e:
+    #   print(e)
+    #   continue
+      
+    
   # JSON 파일로 저장
   jsonData = {}
   jsonData['checkTime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -52,11 +75,27 @@ while True:
           'prdName': key,
           'salePrice': priceData.priceData[key]['salePrice'],
           'dealPrice': priceData.priceData[key]['dealPrice'],
-          'lowPrice': int(value.replace(',', '').replace('원', '')),
-          'diffPrice': int(value.replace(',', '').replace('원', '')) - priceData.priceData[key]['dealPrice'],
+          'lowPrice': int(value[0].replace(',', '').replace('원', '')),
+          'diffPrice': int(value[0].replace(',', '').replace('원', '')) - priceData.priceData[key]['dealPrice'],
+          # 'coupangPrice': int(value[1]) if int(value[1]) > 0 else '-',
+          # 'coupangDiffPrice': int(value[1]) - priceData.priceData[key]['salePrice'] if int(value[1]) > 0 else '-'
       })
     except Exception as e:
       print(e)
+    
+    try:
+      for item in jsonData['data']:
+        if item['prdName'] == key:
+          item['coupangPrice'] = int(value[1])
+          item['coupangDiffPrice'] = int(value[1]) - priceData.priceData[key]['salePrice']
+    except:
+      try:
+        for item in jsonData['data']:
+          if item['prdName'] == key:
+            item['coupangPrice'] = '-'
+            item['coupangDiffPrice'] = '-'
+      except:
+        pass
     
   print(jsonData)
       
