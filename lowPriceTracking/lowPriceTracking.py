@@ -57,7 +57,7 @@ while True:
       
       driverCoupang.quit()
       
-      time.sleep(10)
+      time.sleep(20)
     except Exception as e:
       print(e)
       continue
