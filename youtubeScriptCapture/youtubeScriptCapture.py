@@ -23,5 +23,6 @@ markers = driver.find_elements(By.CLASS_NAME, 'youtube-marker')
 for idx, el in enumerate(markers):
   el.click()
   driver.find_element(By.ID, 'player').screenshot('./img/{}.jpg'.format(idx))
+  time.sleep(1)
 
 time.sleep(10000000)
