@@ -14,15 +14,18 @@ options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 # driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
-url = 'https://youtubetranscript.com/?v=rrlfsORwMGI'
+url = 'https://youtubetranscript.com/?v=lXurE39Z_g8'
 driver.get(url)
 
 start = input('작업 시작(Enter 입력)')
 
 markers = driver.find_elements(By.CLASS_NAME, 'youtube-marker')
 for idx, el in enumerate(markers):
-  el.click()
-  driver.find_element(By.ID, 'player').screenshot('./img/{}.jpg'.format(idx))
-  time.sleep(1)
+  try:
+    el.click()
+    driver.find_element(By.ID, 'player').screenshot('./img/{}.jpg'.format(idx + 1))
+    time.sleep(1)
+  except:
+    pass
 
 time.sleep(10000000)
