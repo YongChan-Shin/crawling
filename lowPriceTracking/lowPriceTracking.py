@@ -57,7 +57,7 @@ while True:
       
       driverCoupang.quit()
       
-      time.sleep(20)
+      time.sleep(25)
     except Exception as e:
       print(e)
       continue
@@ -76,8 +76,6 @@ while True:
           'dealPrice': priceData.priceData[key]['dealPrice'],
           'lowPrice': int(value[0].replace(',', '').replace('원', '')),
           'diffPrice': int(value[0].replace(',', '').replace('원', '')) - priceData.priceData[key]['dealPrice'],
-          # 'coupangPrice': int(value[1]) if int(value[1]) > 0 else '-',
-          # 'coupangDiffPrice': int(value[1]) - priceData.priceData[key]['salePrice'] if int(value[1]) > 0 else '-'
       })
     except Exception as e:
       print(e)
