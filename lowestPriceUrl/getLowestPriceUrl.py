@@ -21,8 +21,6 @@ fillData = PatternFill(fill_type='solid', start_color='FFFF00', end_color='FFFF0
 fillAlignment = Alignment(horizontal='center')
 fillFont = Font(bold=True, color='FF0000')
 
-# sheet2.cell(1, 1).fill = fillData
-
 for i in range(firstRow, lastRow):
   try:
     prdName  = '키즈꼬모 ' + ws.cell(i, 1).value
