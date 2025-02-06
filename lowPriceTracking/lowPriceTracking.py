@@ -72,6 +72,7 @@ while True:
     try:
       jsonData['data'].append({
           'prdName': key,
+          'season': priceData.priceData[key]['season'],
           'salePrice': priceData.priceData[key]['salePrice'],
           'dealPrice': priceData.priceData[key]['dealPrice'],
           'lowPrice': int(value[0].replace(',', '').replace('원', '')),
@@ -89,8 +90,8 @@ while True:
       try:
         for item in jsonData['data']:
           if item['prdName'] == key:
-            item['coupangPrice'] = '-'
-            item['coupangDiffPrice'] = '-'
+            item['coupangPrice'] = 0
+            item['coupangDiffPrice'] = 0
       except:
         pass
     
