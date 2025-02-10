@@ -41,6 +41,7 @@ while True:
       
       time.sleep(2)
     except Exception as e:
+      print('ㅡㅡㅡㅡㅡ (네이버 가격비교 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
       print(e)
       continue
     
@@ -59,6 +60,7 @@ while True:
       
       time.sleep(25)
     except Exception as e:
+      print('ㅡㅡㅡㅡㅡ (쿠팡 가격 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
       print(e)
       continue
     
