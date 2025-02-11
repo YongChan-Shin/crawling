@@ -44,7 +44,7 @@ while True:
 
   url = 'https://www.gmarket.co.kr/n/best?groupCode=100000007&subGroupCode=200006003'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_element(By.CLASS_NAME, 'list__best').find_elements(By.CLASS_NAME, 'list-item')
 
@@ -87,10 +87,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 옥션 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://corners.auction.co.kr/corner/categorybest.aspx?catetab=5&category=32000000'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'text__item-title')
 
@@ -134,10 +136,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 보리보리 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://m.boribori.co.kr/home/best/product'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'product__brand')
 
@@ -181,10 +185,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 11번가 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://www.11st.co.kr/browsing/BestSeller.tmall?method=getBestSellerMain&cornerNo=9&dispCtgrNo=1001356'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   scrollTarget = driver.find_element(By.TAG_NAME, 'body')
   for i in range(3):
@@ -196,7 +202,6 @@ while True:
   for idx, item in enumerate(items):
     try:
       itemTitle = item.find_element(By.TAG_NAME, 'p').text.replace(' ', '')
-      print(itemTitle)
       for idx, brand in enumerate(brandList):
         if itemTitle.find(brand) != -1:
           elevenStBest.append(brandList[idx])
@@ -233,10 +238,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 스마트스토어 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://snxbest.naver.com/product/best/click?categoryId=50000138&sortType=PRODUCT_CLICK&periodType=DAILY&ageType=ALL'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'productCardResponsive_store__GaHMN')
 
@@ -280,15 +287,17 @@ while True:
       
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 롯데온 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://www.lotteon.com/p/display/shop/seltDpShop/29675?callType=menu'
   driver.get(url)
   catBtn1 = driver.find_elements(By.CLASS_NAME, 'srchCategoryName')[7]
   catBtn1.click()
-  time.sleep(1)
+  time.sleep(2)
   catBtn2 = driver.find_elements(By.CLASS_NAME, 's-best-middle-category__button')[1]
   catBtn2.click()
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 's-goods-title__brand')
 
@@ -331,10 +340,12 @@ while True:
       
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 키디키디 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://kidikidi.elandmall.co.kr/u/rank?pageId=1737450657619&preCornerNo=R11300001_gnbMenu'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'brand')
 
@@ -377,10 +388,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 톡딜 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://store.kakao.com/home/best?tab=contProduct&groupId=6&period=HOURLY'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
   for i in range(5):
     driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.END)
     time.sleep(1)
@@ -426,17 +439,19 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ SSG ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://www.ssg.com/page/pc/ranking.ssg'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   driver.find_element(By.ID, 'tabs-:R36ljakl8nj6:--tab-8').click()
-  time.sleep(1)
+  time.sleep(2)
 
   for i in range(5):
     driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.END)
-    time.sleep(1)
+    time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'css-f8xjfi')
 
@@ -479,10 +494,12 @@ while True:
 
 
   # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 맘큐 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  
+  unknownBrand = []
 
   url = 'https://www.momq.co.kr/shop/best_list.html?page_type=sale_list&type=&xcode=053'
   driver.get(url)
-  time.sleep(1)
+  time.sleep(2)
 
   items = driver.find_elements(By.CLASS_NAME, 'prd-name')
 
@@ -530,7 +547,7 @@ while True:
   jsonData['data'].append({
     'channel': '지마켓',
     'bestItems': gmarketBest[:20],
-    'url': 'https://www.gmarket.co.kr/n/best?groupCode=100000007',
+    'url': 'https://www.gmarket.co.kr/n/best?groupCode=100000007&subGroupCode=200006003',
     'kidscomoRating': gmarketRating
     
   })
@@ -559,6 +576,7 @@ while True:
   jsonData['data'].append({
     'channel': '스마트스토어',
     'bestItems': smartStoreBest[:20],
+    'url': 'https://snxbest.naver.com/product/best/click?categoryId=50000138&sortType=PRODUCT_CLICK&periodType=DAILY&ageType=ALL',
     'kidscomoRating': smartStoreRating
   })
 
