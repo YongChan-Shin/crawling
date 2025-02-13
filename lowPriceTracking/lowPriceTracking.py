@@ -67,7 +67,7 @@ def Crawling():
         print(e)
         errCnt += 1
         print('Error Cnt : {}'.format(errCnt))
-        if errCnt > 3:
+        if errCnt > 10:
           driver.quit()
           time.sleep(1800)
           Crawling()
