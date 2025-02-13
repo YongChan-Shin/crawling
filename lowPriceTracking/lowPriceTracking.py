@@ -60,7 +60,7 @@ def Crawling():
         print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx+1, prd, lowPriceData[prd]))
         
         driverCoupang.quit()
-        
+        errCnt = 0
         time.sleep(25)
       except Exception as e:
         print('ㅡㅡㅡㅡㅡ (쿠팡 가격 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
