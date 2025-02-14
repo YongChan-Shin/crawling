@@ -14,6 +14,12 @@ import json
 import products
 import priceData
 
+def count():
+  second = 0
+  for i in range(1, 3001):
+    print(i)
+    time.sleep(1)
+
 def Crawling():
   
   load_dotenv()
@@ -66,9 +72,10 @@ def Crawling():
         print('ㅡㅡㅡㅡㅡ (쿠팡 가격 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
         print(e)
         errCnt += 1
-        print('Error Cnt : {}'.format(errCnt))
-        if errCnt > 10:
+        print('Error Cnt : {} / {}'.format(errCnt, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+        if errCnt > 20:
           driver.quit()
+          count()
           time.sleep(1800)
           Crawling()
         continue
