@@ -16,7 +16,7 @@ import priceData
 
 def count():
   second = 0
-  for i in range(1, 3001):
+  for i in range(1, 1801):
     print(i)
     time.sleep(1)
 
@@ -76,7 +76,6 @@ def Crawling():
         if errCnt > 20:
           driver.quit()
           count()
-          time.sleep(1800)
           Crawling()
         continue
     
