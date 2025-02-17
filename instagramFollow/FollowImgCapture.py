@@ -25,9 +25,12 @@ try:
   btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
   btn.click()
 except:
-  time.sleep(5)
-  btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
-  btn.click()
+  try:
+    time.sleep(5)
+    btn = driver.find_element(By.CLASS_NAME, 'x1yc6y37')
+    btn.click()
+  except:
+    pass
 
 with open('./followIDs.txt') as f:
   lines = f.readlines()
