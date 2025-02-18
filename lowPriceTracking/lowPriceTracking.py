@@ -16,7 +16,7 @@ import priceData
 
 def count():
   second = 0
-  for i in range(1, 1801):
+  for i in range(1, 2101):
     print(i)
     time.sleep(1)
 
