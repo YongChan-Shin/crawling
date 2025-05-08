@@ -290,16 +290,16 @@ while True:
   
   unknownBrand = []
 
-  url = 'https://www.lotteon.com/p/display/shop/seltDpShop/29675?callType=menu'
+  url = 'https://www.lotteon.com/p/display/shop/seltDpShop/13979?callType=menu'
   driver.get(url)
-  catBtn1 = driver.find_elements(By.CLASS_NAME, 'srchCategoryName')[7]
+  catBtn1 = driver.find_elements(By.CLASS_NAME, 'tab')[5]
   catBtn1.click()
   time.sleep(2)
-  catBtn2 = driver.find_elements(By.CLASS_NAME, 's-best-middle-category__button')[1]
+  catBtn2 = driver.find_elements(By.CLASS_NAME, 'depthBtn')[1]
   catBtn2.click()
   time.sleep(2)
 
-  items = driver.find_elements(By.CLASS_NAME, 's-goods-title__brand')
+  items = driver.find_elements(By.CLASS_NAME, 'brdNm')
 
   for idx, item in enumerate(items):
     try:
@@ -446,7 +446,7 @@ while True:
   driver.get(url)
   time.sleep(2)
 
-  driver.find_element(By.ID, 'tabs-:R36ljakl8nj6:--tab-8').click()
+  driver.find_element(By.ID, 'tabs-:R36ljajl8nj6:--tab-8').click()
   time.sleep(2)
 
   for i in range(5):
