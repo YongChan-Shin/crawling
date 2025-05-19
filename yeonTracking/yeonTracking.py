@@ -8,7 +8,7 @@ import time
 from win10toast import ToastNotifier
 from random import randint
 
-# 신규 발주건 발생 시 알림 호출 기본 세팅
+# 알림 호출 기본 세팅
 def bubbleSort(array):
     n = len(array)
     for i in range(n):
