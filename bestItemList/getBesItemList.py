@@ -446,7 +446,7 @@ while True:
   driver.get(url)
   time.sleep(2)
 
-  driver.find_element(By.ID, 'tabs-:R36ljajl8nj6:--tab-8').click()
+  driver.find_element(By.ID, 'tabs-:R36ljajl8njm:--tab-8').click()
   time.sleep(2)
 
   for i in range(5):
@@ -621,7 +621,7 @@ while True:
   # 트래킹 json 파일 복사
   from_jsonFile_path = './trackingJSON/bestItem.json'
   to_jsonFile_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/data/bestItem.json'
-  shutil.copy(from_jsonFile_path, to_jsonFile_path)    
+  shutil.copy(from_jsonFile_path, to_jsonFile_path)
 
   driver.quit()
   

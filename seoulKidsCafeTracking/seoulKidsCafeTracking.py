@@ -41,16 +41,19 @@ while True:
   
   try:
     driver.get("https://icare.seoul.go.kr/icare/user/kidsCafeResve/BD_selectKidsCafeResveCal.do?q_fcltyId=SB240702")
+    driver.find_element(By.CLASS_NAME, 'agree_close').click()
+    time.sleep(3)
+    driver.find_element(By.CLASS_NAME, 'next').click()
+    time.sleep(3)
+    driver.find_element(By.CLASS_NAME, 'agree_close').click()
+    time.sleep(3)
     
-    time.sleep(2)
-
-    
-    firstTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(3) > td:nth-child(7) > div > p:nth-child(1) > span > i').text
-    secondTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(3) > td:nth-child(7) > div > p:nth-child(2) > span > i').text
-    thirdTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(3) > td:nth-child(7) > div > p:nth-child(3) > span > i').text
-    firstTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(4) > td.day > div > p:nth-child(1) > span > i').text
-    secondTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(4) > td.day > div > p:nth-child(2) > span > i').text
-    thirdTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(4) > td.day > div > p:nth-child(3) > span > i').text
+    firstTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(1) > td:nth-child(7) > div > p:nth-child(1) > span > i').text
+    secondTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(1) > td:nth-child(7) > div > p:nth-child(2) > span > i').text
+    thirdTime = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(1) > td:nth-child(7) > div > p:nth-child(3) > span > i').text
+    firstTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(2) > td:nth-child(1) > div > p:nth-child(1) > span > i').text
+    secondTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(2) > td:nth-child(1) > div > p:nth-child(2) > span > i').text
+    thirdTime2 = driver.find_element(By.CSS_SELECTOR, '#calendar > tbody > tr:nth-child(2) > td:nth-child(1) > div > p:nth-child(3) > span > i').text
 
     print(firstTime)
     print(secondTime)
@@ -59,8 +62,7 @@ while True:
     print(secondTime2)
     print(thirdTime2)
 
-    # if firstTime == '1' or firstTime2 == '1' or secondTime == '1' or secondTime2 == '1' or thirdTime == '1' or thirdTime2 == '1':
-    if firstTime2 == '1' or secondTime2 == '1' or thirdTime2 == '1':
+    if firstTime != '0' or firstTime2 != '0' or secondTime != '0' or secondTime2 != '0' or thirdTime != '0' or thirdTime2 != '0':
       toaster.show_toast("CHECK!","SEOUL CHECK", icon_path=None, duration=1000, threaded=True)
       print("취소건 발생!(체크)")
     else:

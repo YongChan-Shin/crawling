@@ -16,7 +16,7 @@ import priceData
 
 def count():
   second = 0
-  for i in range(1, 2101):
+  for i in range(1, 3001):
     print(i)
     time.sleep(1)
 
@@ -28,7 +28,11 @@ def Crawling():
   options.add_argument('headless')
   options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
   
+  driver.get('https://search.shopping.naver.com/search/all?query=키즈꼬모 우비소녀세트')
+  input('작업 시작(enter 입력)')
+  
   errCnt = 0
+  
   
   while True:
 
@@ -36,11 +40,14 @@ def Crawling():
     lowPriceData = {}
 
     for idx, prd in enumerate(products.products):
+      
+      time.sleep(5)
+      
       try:
         driver.get('https://search.shopping.naver.com/search/all?query={}&sort=price_asc&fo=true'.format(prd))
-        priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__S2p_v')[0].text
+        priceEl = driver.find_elements(By.CLASS_NAME, 'price_num__Y66T7')[0].text
         lowPriceData[prd] = [priceEl]
-        thumbnailImg = driver.find_elements(By.CLASS_NAME, 'product_item__MDtDF')[0]
+        thumbnailImg = driver.find_elements(By.CLASS_NAME, 'product_item__KQayS')[0]
         thumbnailImg.screenshot('./thumbnails/{}.jpg'.format(prd.replace('키즈꼬모 ', '')))
         
         # 썸네일 이미지 복사
@@ -48,36 +55,37 @@ def Crawling():
         to_thumbnail_path = 'D:/1.업무/10.기타자료/Development/kidscomo/public/img/lowPriceTracking/{}.jpg'.format(prd.replace('키즈꼬모 ', ''))
         shutil.copy(from_thumbnail_path, to_thumbnail_path)
         
-        time.sleep(2)
+        time.sleep(45)
+        
       except Exception as e:
         print('ㅡㅡㅡㅡㅡ (네이버 가격비교 조회 오류) {} / {} ㅡㅡㅡㅡㅡ'.format(idx, prd))
         print(e)
         continue
       
       # 쿠팡 판매가 크롤링
-      try:
-        driverCoupang = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-        url = 'https://www.coupang.com/vp/products/{}'.format(priceData.priceData[prd.replace('키즈꼬모 ', '')]['coupangId'])
-        driverCoupang.get(url)
+      # try:
+      #   driverCoupang = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+      #   url = 'https://www.coupang.com/vp/products/{}'.format(priceData.priceData[prd.replace('키즈꼬모 ', '')]['coupangId'])
+      #   driverCoupang.get(url)
         
-        coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
+      #   coupangPriceEl = driverCoupang.find_element(By.CLASS_NAME, 'total-price').find_element(By.TAG_NAME, 'strong').text.replace(',', '').replace('원', '')
         
-        lowPriceData[prd].append(coupangPriceEl)
-        print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx+1, prd, lowPriceData[prd]))
+      #   lowPriceData[prd].append(coupangPriceEl)
+      #   print("{} / ({}) {} {}".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), idx+1, prd, lowPriceData[prd]))
         
-        driverCoupang.quit()
-        errCnt = 0
-        time.sleep(25)
-      except Exception as e:
-        print('ㅡㅡㅡㅡㅡ (쿠팡 가격 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
-        print(e)
-        errCnt += 1
-        print('Error Cnt : {} / {}'.format(errCnt, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
-        if errCnt > 20:
-          driver.quit()
-          count()
-          Crawling()
-        continue
+      #   driverCoupang.quit()
+      #   errCnt = 0
+      #   time.sleep(25)
+      # except Exception as e:
+      #   print('ㅡㅡㅡㅡㅡ (쿠팡 가격 조회 오류) {} ㅡㅡㅡㅡㅡ'.format(prd))
+      #   print(e)
+      #   errCnt += 1
+      #   print('Error Cnt : {} / {}'.format(errCnt, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+      #   if errCnt > 25:
+      #     driver.quit()
+      #     count()
+      #     Crawling()
+      #   continue
     
     # JSON 파일로 저장
     jsonData = {}

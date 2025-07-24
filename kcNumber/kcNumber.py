@@ -26,7 +26,7 @@ targetItemDivEl = targetItemUl.find_element(By.CSS_SELECTOR, 'li:nth-child(1) > 
 targetItemDivEl.click()
 time.sleep(5)
 
-for page in range(100):
+for page in range(1000):
   for i in range(10):
     try:
       number = driver.find_element(By.ID, "certNum_{}".format(i))

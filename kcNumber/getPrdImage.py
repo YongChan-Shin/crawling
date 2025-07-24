@@ -16,8 +16,10 @@ with open('./kcNumbers.txt') as f:
   
   for number in lines:
     try:
+      driver.set_page_load_timeout(3)
       print(idx, number)
-      driver.get('http://office.safetykorea.kr/fileData/certInfo/2024/09/{}_1.jpg'.format(number))
+      driver.get('http://office.safetykorea.kr/fileData/certInfo/2025/03/{}_1.jpg'.format(number))
+      print(driver.current_url)
       body = driver.find_element(By.TAG_NAME, 'body')
       body.screenshot('./img/{}.jpg'.format(number))
       idx += 1
