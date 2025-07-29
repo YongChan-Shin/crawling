@@ -62,7 +62,8 @@ while True:
     print(secondTime2)
     print(thirdTime2)
 
-    if firstTime != '0' or firstTime2 != '0' or secondTime != '0' or secondTime2 != '0' or thirdTime != '0' or thirdTime2 != '0':
+    # if firstTime != '0' or firstTime2 != '0' or secondTime != '0' or secondTime2 != '0' or thirdTime != '0' or thirdTime2 != '0':
+    if thirdTime2 != '0':
       toaster.show_toast("CHECK!","SEOUL CHECK", icon_path=None, duration=1000, threaded=True)
       print("취소건 발생!(체크)")
     else:
