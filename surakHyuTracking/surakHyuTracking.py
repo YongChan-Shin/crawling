@@ -37,11 +37,13 @@ driver.get("https://www.foresttrip.go.kr")
 
 input("로그인 후 작업 시작")
 
-url_1 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1b9d9c1a-2116-4c58-8479-123e2c0777a9&netfunnel_key=D408EB70D49E925251D07148DE4D0106D0334C7ACEE0DC3CD978FC460B01035BA6733153E2257C300EE3DB844A1E9027F9E6802FC91FCD0B78068CC783FEAAD91AFA79CD78E1B4FC1EBD6FCF917F7CB517B16F302204CFE4FA9F00BB5FFC9C520E707B625E9445A1E4ED461647D254A5322C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250802&srchRsrvtEdDt=20250803&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
+url_1 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1562c729-a43b-4c72-89e5-44733fcbf819&netfunnel_key=FE4B357A11F98F3365FFB6A104318966EE02449F578530B324BE9F1587DB802994535D25B2D0592A58AA3B685772A1AC3D4A64E2DB812769A75AA6A62B05F4C91AFA79CD78E1B4FC1EBD6FCF917F7CB580F63CEC080D0FCA7DB09F3C181742030E707B625E9445A1E4ED461647D254A5362C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250906&srchRsrvtEdDt=20250907&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
 
-url_2 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1b9d9c1a-2116-4c58-8479-123e2c0777a9&netfunnel_key=D408EB70D49E925251D07148DE4D0106D0334C7ACEE0DC3CD978FC460B01035BA6733153E2257C300EE3DB844A1E9027F9E6802FC91FCD0B78068CC783FEAAD91AFA79CD78E1B4FC1EBD6FCF917F7CB517B16F302204CFE4FA9F00BB5FFC9C520E707B625E9445A1E4ED461647D254A5322C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250823&srchRsrvtEdDt=20250824&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
+url_2 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1562c729-a43b-4c72-89e5-44733fcbf819&netfunnel_key=1935E36C515F0769A1797D1C411FF9515160D22FA8554CB41F85D5638364EEF0CD5804D89D520733A8CBF2861DE6ED0F6DD104B1B2F08EAC14AC4F7E43DEA27D1AFA79CD78E1B4FC1EBD6FCF917F7CB580F63CEC080D0FCA7DB09F3C181742030E707B625E9445A1E4ED461647D254A5332C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250913&srchRsrvtEdDt=20250914&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
 
-url_3 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1b9d9c1a-2116-4c58-8479-123e2c0777a9&netfunnel_key=D408EB70D49E925251D07148DE4D0106D0334C7ACEE0DC3CD978FC460B01035BA6733153E2257C300EE3DB844A1E9027F9E6802FC91FCD0B78068CC783FEAAD91AFA79CD78E1B4FC1EBD6FCF917F7CB517B16F302204CFE4FA9F00BB5FFC9C520E707B625E9445A1E4ED461647D254A5322C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250830&srchRsrvtEdDt=20250831&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
+url_3 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1562c729-a43b-4c72-89e5-44733fcbf819&netfunnel_key=858C030AF4A2B23AB9765E8E77C743F81E8E0F19EAFE302D7E0EDF32A663D68C6147945D2A50A0F89DF8F902E512753BDA60C5A1E53AAE647422A01EBECADD061AFA79CD78E1B4FC1EBD6FCF917F7CB580F63CEC080D0FCA7DB09F3C181742030E707B625E9445A1E4ED461647D254A5332C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250920&srchRsrvtEdDt=20250921&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
+
+url_4 = "https://www.foresttrip.go.kr/rep/or/sssn/fcfsRsrvtSmplPssblGoodsDetls.do?_csrf=1562c729-a43b-4c72-89e5-44733fcbf819&netfunnel_key=858C030AF4A2B23AB9765E8E77C743F81E8E0F19EAFE302D7E0EDF32A663D68C6147945D2A50A0F89DF8F902E512753BDA60C5A1E53AAE647422A01EBECADD061AFA79CD78E1B4FC1EBD6FCF917F7CB580F63CEC080D0FCA7DB09F3C181742030E707B625E9445A1E4ED461647D254A5332C312C302C30&srchInsttArcd=1&srchInsttId=ID02030129&srchRsrvtBgDt=20250927&srchRsrvtEdDt=20250928&srchStngNofpr=3&srchSthngCnt=1&srchWord=&srchUseDt=&houseCampSctin=&rsrvtPssblYn=N&rsrvtWtngSctin=01&srchHouseCharg=&srchCampCharg=&goodsClsscHouseCdArr=&goodsClsscCampCdArr=&srchInsttTpcd=&cmdogYn=N&bbqYn=N&dsprsYn=N&otsdWeterYn=N&wifiYn=N&snowPlaceYn=N&srchMyLtd=&srchMyLng=&srchDstnc=&gNowPage=1&srchGoodsId=&hmpgId=FRIP"
 
 while True:
   
@@ -51,18 +53,24 @@ while True:
     driver.get(url_1)
     revDiv_1 = driver.find_elements(By.CLASS_NAME, 'goods_list_area')
     print(len(revDiv_1))
-    
     time.sleep(1)
     
     driver.get(url_2)
     revDiv_2 = driver.find_elements(By.CLASS_NAME, 'goods_list_area')
     print(len(revDiv_2))
+    time.sleep(1)
     
     driver.get(url_3)
     revDiv_3 = driver.find_elements(By.CLASS_NAME, 'goods_list_area')
     print(len(revDiv_3))
+    time.sleep(1)
+    
+    driver.get(url_4)
+    revDiv_4 = driver.find_elements(By.CLASS_NAME, 'goods_list_area')
+    print(len(revDiv_4))
+    time.sleep(1)
 
-    if len(revDiv_1) > 0 or len(revDiv_2) or len(revDiv_3)> 0:
+    if len(revDiv_1) > 0 or len(revDiv_2) > 0 or len(revDiv_3) > 0 or len(revDiv_4) > 0:
       toaster.show_toast("CHECK!","surakHyu CHECK", icon_path=None, duration=1000, threaded=True)
       print("취소건 발생!(체크)")
     else:
@@ -70,6 +78,7 @@ while True:
           
     time.sleep(1)
     toaster.__init__()
+    
     idx += 1
   except Exception as e:
     print(e)
