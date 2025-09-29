@@ -32,6 +32,7 @@ options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 
 idx = 1
+errCnt = 0
 
 driver.get("https://www.foresttrip.go.kr/rep/or/sssn/monthRsrvtSmplStatus.do")
 
@@ -40,6 +41,8 @@ input("로그인 후 작업 시작")
 srchBtn = driver.find_element(By.ID, 'searchBtn')
 
 while True:
+  
+  driver.execute_script('document.title = "10"')
   
   try:
     srchBtn.click() 
@@ -68,3 +71,8 @@ while True:
     time.sleep(1)
   except Exception as e:
     print(e)
+    errCnt += 1
+    print("errCnt : {}".format(errCnt))
+    if errCnt >= 20:
+      toaster.show_toast("ERROR!","ERROR CHECK", icon_path=None, duration=1000, threaded=True)
+      print("에러 발생!(체크)")
