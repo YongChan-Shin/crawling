@@ -33,8 +33,10 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 idx = 1
 errCnt = 0
+month = 9
 
 driver.get("https://www.foresttrip.go.kr/rep/or/sssn/monthRsrvtSmplStatus.do")
+driver.execute_script('document.title = "{}"'.format(month))
 
 input("로그인 후 작업 시작")
 
@@ -42,7 +44,7 @@ srchBtn = driver.find_element(By.ID, 'searchBtn')
 
 while True:
   
-  driver.execute_script('document.title = "10"')
+  driver.execute_script('document.title = "{}"'.format(month))
   
   try:
     srchBtn.click() 
@@ -60,13 +62,14 @@ while True:
     
     if len(checkList) > 1:
         toaster.show_toast("CHECK!","surakHyu CHECK", icon_path=None, duration=1000, threaded=True)
-        print("취소건 발생!(체크)")
+        print("{}월 취소건 발생!(체크)".format(month))
     else:
       print("{}회차 탐색 중({})".format(idx, time.strftime("%Y-%m-%d %H:%M:%S")))
       
     toaster.__init__()
     
     idx += 1
+    
     
     time.sleep(1)
   except Exception as e:
@@ -75,4 +78,4 @@ while True:
     print("errCnt : {}".format(errCnt))
     if errCnt >= 20:
       toaster.show_toast("ERROR!","ERROR CHECK", icon_path=None, duration=1000, threaded=True)
-      print("에러 발생!(체크)")
+      print("{}월 에러 발생!(체크)".format(month))
