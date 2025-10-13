@@ -33,7 +33,7 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 idx = 1
 errCnt = 0
-month = 10
+month = 11
 
 driver.get("https://www.foresttrip.go.kr/rep/or/sssn/monthRsrvtSmplStatus.do")
 driver.execute_script('document.title = "{}"'.format(month))
@@ -55,12 +55,12 @@ while True:
     checkList = []
 
     for i in spanEls:
-      if i.text == '예':
+      if i.text == '예' or i.text == '대' or i.text == '대1' or i.text == '대2' or i.text == '대3':
         checkList.append(i.text)
         
-    print(len(checkList) - 1)
+    print(len(checkList) - 2)
     
-    if len(checkList) > 1:
+    if len(checkList) > 2:
         toaster.show_toast("{}월 CHECK!".format(month),"surakHyu CHECK", icon_path=None, duration=1000, threaded=True)
         print("{}월 취소건 발생!(체크)".format(month))
     else:
