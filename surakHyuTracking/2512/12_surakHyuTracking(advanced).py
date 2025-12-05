@@ -61,7 +61,9 @@ while True:
     errCnt += 1
     print("errCnt : {}".format(errCnt))
     if errCnt >= 30:
-      toaster.show_toast("{}월 ERROR!".format(month),"ERROR CHECK", icon_path=None, duration=1000, threaded=True)
+      toaster = WindowsToaster('surakHyu ERROR CHECK')
+      newToast.text_fields = ['{}월 ERROR!'.format(month)]
+      toaster.show_toast(newToast)
       print("{}월 에러 발생!(체크)".format(month))
       
     time.sleep(5)
