@@ -5,27 +5,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
-from win10toast import ToastNotifier
-from random import randint
-
-# 알림 호출 기본 세팅
-def bubbleSort(array):
-    n = len(array)
-    for i in range(n):
-        already_sorted = True
-
-        for j in range(n - i - 1):
-            if array[j] > array[j + 1]:
-                array[j], array[j + 1] = array[j + 1], array[j]
-                already_sorted = False
-
-        if already_sorted:
-            break
-
-    return array
-
-toaster = ToastNotifier()
-array = [randint(-3000, 3000) for i in range(3000)]
+# 윈도우 알림 세팅
+from windows_toasts import Toast, WindowsToaster
+newToast = Toast()
 
 options = webdriver.ChromeOptions()
 # options.add_argument('headless')
@@ -80,12 +62,12 @@ while True:
           pass
 
       if len(checkedDate) != 0:
-        toaster.show_toast("{}월 CHECK!".format(i),"seoulMilk CHECK", icon_path=None, duration=1000, threaded=True)
+        toaster = WindowsToaster('seoulMilk CHECK')
+        newToast.text_fields = ['{}월 CHECK!'.format(i)]
+        toaster.show_toast(newToast)
         print("{}월 취소건 발생!(체크)".format(i))
       else:
         print("{}회차 탐색 중({})".format(idx, time.strftime("%Y-%m-%d %H:%M:%S")))
-        
-      toaster.__init__()
         
       idx += 1
       
@@ -96,7 +78,9 @@ while True:
       errCnt += 1
       print("errCnt : {}".format(errCnt))
       if errCnt >= 30:
-        toaster.show_toast("{}월 ERROR!".format(i),"ERROR CHECK", icon_path=None, duration=1000, threaded=True)
+        toaster = WindowsToaster('seoulMilk ERROR CHECK')
+        newToast.text_fields = ['{}월 ERROR!'.format(i)]
+        toaster.show_toast(newToast)
         print("{}월 에러 발생!(체크)".format(i))
         
       time.sleep(3)
