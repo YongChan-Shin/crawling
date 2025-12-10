@@ -14,6 +14,7 @@ from random import randint
 
 load_dotenv()
 
+
 # 윈도우 알림 세팅
 from windows_toasts import Toast, WindowsToaster
 newToast = Toast()
@@ -29,9 +30,11 @@ driver = webdriver.Chrome(options=options)
 url_1 = os.environ.get("URL_1")
 url_2 = os.environ.get("URL_2")
 
-
+time.sleep(3)
 
 driver.get(os.environ.get("URL_1"))
+
+time.sleep(3)
 
 # 로그인
 inputID = driver.find_elements(By.TAG_NAME, 'input')[0]
